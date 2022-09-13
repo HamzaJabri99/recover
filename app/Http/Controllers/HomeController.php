@@ -13,7 +13,10 @@ class HomeController extends Controller
     {
         if (Auth::id()) {
             if (Auth::user()->user_type == '0') {
-                return view('user.home');
+                $doctors = Doctor::all();
+                return view('user.home')->with([
+                    'doctors' => $doctors
+                ]);
             } else {
                 return view('admin.home');
             }
@@ -23,9 +26,13 @@ class HomeController extends Controller
     }
     public function index()
     {
-        $doctors = Doctor::all();
-        return view('user.home')->with([
-            'doctors' => $doctors
-        ]);
+        if (Auth::id()) {
+            return redirect('home');
+        } else {
+            $doctors = Doctor::all();
+            return view('user.home')->with([
+                'doctors' => $doctors
+            ]);
+        }
     }
 }
