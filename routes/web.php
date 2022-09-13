@@ -30,3 +30,4 @@ Route::middleware([
     })->name('dashboard');
 });
 Route::get('/add_doctor', [AdminController::class, 'addView']);
+Route::post('/store_doctor', [AdminController::class, 'storeDoctor']);

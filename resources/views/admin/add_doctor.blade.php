@@ -36,15 +36,31 @@
             @include('admin.navbar')
             <!-- partial -->
             <div class="container-fluid page-body-wrapper">
+
                 <div class="container w-50 my-5 form-container">
-                    <form>
+                    @if(session()->has('success'))
+                    <div class="card badge badge-success my-4">
+                        {{ session()->get('success') }}
+                    </div>
+                    @endif
+                    @if ($errors->any())
+                    <div class="alert alert-danger my-4">
+                        <ul class="list-unstyled">
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+                    <form action="{{ url('store_doctor') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="mb-4">
                             <label for="name" class="form-label">Doctor's Name</label>
-                            <input type="text" class="form-control" id="name">
+                            <input type="text" class="form-control" id="name" name="name">
                         </div>
                         <div class="mb-4">
                             <label for="phone" class="form-label">Phone</label>
-                            <input type="phone" class="form-control" id="phone" pattern="\d{10}">
+                            <input type="phone" class="form-control" id="phone" pattern="\d{10}" name="phone">
                         </div>
                         <div class="mb-4">
                             <label for="speciality" class="form-label">Speciality</label>
