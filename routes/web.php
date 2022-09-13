@@ -31,3 +31,4 @@ Route::middleware([
 });
 Route::get('/add_doctor', [AdminController::class, 'addView']);
 Route::post('/store_doctor', [AdminController::class, 'storeDoctor']);
+Route::post('/appointment', [AdminController::class, 'storeAppointment']);

@@ -103,9 +103,21 @@
                     </ul>
                 </div> <!-- .navbar-collapse -->
             </div> <!-- .container -->
-        </nav>
-    </header>
 
+        </nav>
+        @if(session()->has('success'))
+        <div class="row d-flex">
+            <div class="col-md-4 align-self-center w-25 mx-auto my-2">
+                <div class="alert alert-info alert-dismissible fade show " role="alert">
+                    {{session()->get('success')}}
+
+                    <button class="close outline btn btn-tertiary" data-dismiss="alert">X</button>
+                </div>
+            </div>
+        </div>
+        @endif
+
+    </header>
     <div class="page-hero bg-image overlay-dark" style="background-image: url(../assets/img/bg_image_1.jpg);">
         <div class="hero-section">
             <div class="container text-center wow zoomIn">

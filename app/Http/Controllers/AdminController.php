@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -34,5 +36,23 @@ class AdminController extends Controller
         $doctor->image = $imageName;
         $doctor->save();
         return redirect()->back()->with('success', 'doctor added successfully');
+    }
+    public function storeAppointment(Request $request)
+    {
+        $appointment = new Appointment();
+        $appointment->fullname = $request->fullname;
+        $appointment->email = $request->email;
+        $appointment->phone = $request->phone;
+        $appointment->doctor = $request->doctor;
+        $appointment->message = $request->message;
+        $appointment->date = $request->date;
+        $appointment->status = 'pending';
+        if (Auth::id()) {
+            $appointment->user_id = Auth::id();
+        } else {
+            $appointment->user_id = null;
+        }
+        $appointment->save();
+        return redirect()->back()->with('success', 'Your Appointment has been booked');
     }
 }
