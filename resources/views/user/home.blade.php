@@ -91,6 +91,9 @@
                         <div class="ml-3 relative">
                             <x-app-layout></x-app-layout>
                         </div>
+                        <li class="nav-item">
+                            <a class="btn btn-primary ml-lg-3 " href="{{ url('myappointments') }}">My Appointments</a>
+                        </li>
                         @else
                         <li class="nav-item">
                             <a class="btn btn-primary ml-lg-3 " href="{{ route('login') }}">Login</a>

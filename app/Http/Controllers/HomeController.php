@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,5 +35,20 @@ class HomeController extends Controller
                 'doctors' => $doctors
             ]);
         }
+    }
+    public function myappointments()
+    {
+        if (Auth::id()) {
+            $myAppointments = Appointment::where('user_id', Auth::id())->get();
+            return view('user.my_appointments')->with('myAppointments', $myAppointments);
+        } else {
+            return redirect()->back();
+        }
+    }
+    public function cancelAppointment($id)
+    {
+        $appointment = Appointment::where('id', $id)->first();
+        $appointment->delete();
+        return redirect()->back()->with('message', 'canceled Successfuly');
     }
 }

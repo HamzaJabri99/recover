@@ -32,3 +32,5 @@ Route::middleware([
 Route::get('/add_doctor', [AdminController::class, 'addView']);
 Route::post('/store_doctor', [AdminController::class, 'storeDoctor']);
 Route::post('/appointment', [AdminController::class, 'storeAppointment']);
+Route::get('/myappointments', [HomeController::class, 'myappointments']);
+Route::get('/cancel_appointment/{id}', [HomeController::class, 'cancelAppointment']);
