@@ -29,7 +29,7 @@ class AdminController extends Controller
         $doctor->speciality = $request->speciality;
         $doctor->room = $request->room;
         $image = $request->image;
-        $imageName = time() . '_' . $image->getClientOriginalExtension();
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
         $request->image->move('doctorimage', $imageName);
         $doctor->image = $imageName;
         $doctor->save();
