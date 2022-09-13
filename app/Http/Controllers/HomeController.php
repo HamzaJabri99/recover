@@ -47,7 +47,7 @@ class HomeController extends Controller
     }
     public function cancelAppointment($id)
     {
-        $appointment = Appointment::where('id', $id)->first();
+        $appointment = Appointment::find($id);
         $appointment->delete();
         return redirect()->back()->with('message', 'canceled Successfuly');
     }

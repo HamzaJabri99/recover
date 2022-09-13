@@ -140,9 +140,7 @@
                 </tr>
             </thead>
             <tbody class="table-dark">
-
                 @foreach ($myAppointments as $appointment )
-
                 <tr>
                     <td>{{ $appointment->doctor }}</td>
                     <td>{{ $appointment->date }}</td>
