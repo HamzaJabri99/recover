@@ -39,8 +39,11 @@
 
                 <div class="container w-50 my-5 form-container">
                     @if(session()->has('success'))
-                    <div class="card badge badge-success my-4">
+                    <div class="alert alert-info my-4 d-flex align-items-center">
                         {{ session()->get('success') }}
+
+                        <button class="close markX mx-3" data-bs-dismiss="alert">X</button>
+
                     </div>
                     @endif
                     @if ($errors->any())

@@ -55,4 +55,11 @@
         display: inline-flex;
         width: 150px
     }
+
+    .markX {
+        position: absolute;
+        right: 0;
+        font-weight: bolder;
+        font-size: 1.3rem;
+    }
 </style>
